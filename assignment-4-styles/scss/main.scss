@@ -1,0 +1,74 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+}
+
+.flex-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+nav {
+    width: 100%;
+    height: 5vh;
+    background: linear-gradient(45deg, rgb(116, 197, 152) 0%, rgb(136, 46, 145) 100%);
+    box-shadow: 0px 5px 5px 0px rgba(0, 0, 0, 0.301);
+    .nav-content {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        div {
+            padding: 5px;
+            color: white;
+        }
+        img {
+            width: 25px;
+            height: 25px;
+        }
+        
+        
+    }
+}
+
+.message-board {
+    height: 90vh;
+    background: linear-gradient(45deg, rgb(116, 197, 152) 0%, rgb(136, 46, 145) 100%);
+    position: relative;
+    .messages {
+        position: absolute;
+        left: 5%;
+        bottom: 5%;
+        display: flex;
+        flex-direction: column;
+        div {
+            margin: 15px;
+            background: white;
+        }
+    }
+}
+
+.typing-bar {
+    height: 5vh;
+    background: linear-gradient(45deg, rgb(116, 197, 152) 0%, rgb(136, 46, 145) 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    input {
+        border-radius: 30px;
+        border: 0.5px solid white;
+        outline: none;
+        width: 90%;
+        height: 60%;
+        background: rgb(56, 56, 56);
+        color: white;
+    }
+    input:hover {
+        background: rgb(73, 73, 73);
+    }
+}
