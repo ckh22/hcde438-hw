@@ -43,14 +43,26 @@ nav .nav-content div {
 }
 
 nav .nav-content img {
+  padding: 5px;
   width: 25px;
   height: 25px;
+}
+
+.flex-messages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding-left: 15px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .message-board {
   height: 90vh;
   background: linear-gradient(45deg, #74c598 0%, #882e91 100%);
   position: relative;
+  overflow: auto;
 }
 
 .message-board .messages {
@@ -67,8 +79,12 @@ nav .nav-content img {
 }
 
 .message-board .messages div {
-  margin: 15px;
-  background: white;
+  border-radius: 0px 15px 15px 15px;
+  background: black;
+  color: white;
+  margin-bottom: 15px;
+  width: 250px;
+  height: 50px;
 }
 
 .typing-bar {
@@ -83,10 +99,12 @@ nav .nav-content img {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  position: relative;
 }
 
 .typing-bar input {
   border-radius: 30px;
+  padding-left: 5px;
   border: 0.5px solid white;
   outline: none;
   width: 90%;
@@ -97,5 +115,18 @@ nav .nav-content img {
 
 .typing-bar input:hover {
   background: #494949;
+}
+
+.typing-bar img {
+  width: 30px;
+  height: 30px;
+  position: absolute;
+  right: 5%;
+}
+
+.typing-bar img:hover {
+  opacity: 0.9;
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
 }
 /*# sourceMappingURL=main.css.map */
