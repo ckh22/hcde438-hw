@@ -1,0 +1,111 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+.messages {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.messages .message {
+  padding: 5px;
+}
+
+.main {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.main nav {
+  height: 5vh;
+  background: black;
+  color: white;
+}
+
+.main nav .top-content {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main nav .top-content .left {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.main nav .top-content .left .logo {
+  padding: 1em;
+}
+
+.main nav .top-content .right form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.main nav .top-content .right form button {
+  height: 3vh;
+  border: none;
+  margin-left: 5px;
+  outline: none;
+}
+
+.main nav .top-content .right form input {
+  height: 3vh;
+  outline: none;
+}
+
+.main nav .top-content .right .logout {
+  width: 100px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  background: linear-gradient(45deg, #7d3b9c 0%, #804400 100%);
+  -webkit-transition-property: background, color, font-weight, -webkit-transform;
+  transition-property: background, color, font-weight, -webkit-transform;
+  transition-property: background, color, transform, font-weight;
+  transition-property: background, color, transform, font-weight, -webkit-transform;
+  -webkit-transition-duration: 0.5s;
+          transition-duration: 0.5s;
+  -webkit-transition-timing-function: ease-in-out;
+          transition-timing-function: ease-in-out;
+}
+
+.main nav .top-content .right .logout:hover {
+  font-weight: 600;
+  background: linear-gradient(45deg, #431f53 0%, #4d2900 100%);
+  -webkit-transform: scale(1.05);
+          transform: scale(1.05);
+  color: white;
+}
+/*# sourceMappingURL=Messenger.css.map */
