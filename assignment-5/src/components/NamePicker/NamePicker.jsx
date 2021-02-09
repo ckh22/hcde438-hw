@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react'
+import React, {useState} from 'react'
 import {Form, TextField} from 'react-components-form';
 import Schema from 'form-schema-validation';
 

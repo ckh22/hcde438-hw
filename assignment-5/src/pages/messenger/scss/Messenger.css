@@ -17,8 +17,41 @@ body {
           flex-direction: column;
 }
 
-.messages .message {
-  padding: 5px;
+.messages .container {
+  width: 400px;
+  height: 70px;
+  margin: 1em 2em;
+  background: #0f122e;
+  color: white;
+  position: relative;
+  border-radius: 15px 15px 15px 0px;
+}
+
+.messages .container .message {
+  position: absolute;
+  width: 350px;
+  left: 5%;
+  top: 5%;
+}
+
+.messages .container .date {
+  position: absolute;
+  right: 5%;
+  bottom: 5%;
+}
+
+.myForm {
+  padding: 1em;
+  border-top: 1px solid #8897ac;
+  -webkit-box-shadow: 0px -5px 10px 0px black;
+          box-shadow: 0px -5px 10px 0px black;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.myForm div input {
+  height: 60px;
 }
 
 .main {
@@ -33,7 +66,9 @@ body {
 
 .main nav {
   height: 5vh;
-  background: black;
+  background: #31325f;
+  -webkit-box-shadow: 0px 5px 10px 0px rgba(87, 88, 167, 0.658);
+          box-shadow: 0px 5px 10px 0px rgba(87, 88, 167, 0.658);
   color: white;
 }
 
@@ -71,13 +106,29 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .main nav .top-content .right form button {
+  background: #667e85;
+  color: white;
   height: 3vh;
   border: none;
   margin-left: 5px;
   outline: none;
+  width: 100px;
+  -webkit-transition-property: background, color;
+  transition-property: background, color;
+  -webkit-transition-duration: 0.4s;
+          transition-duration: 0.4s;
+  -webkit-transition-timing-function: ease-out;
+          transition-timing-function: ease-out;
+}
+
+.main nav .top-content .right form button:hover {
+  background: linear-gradient(45deg, #576f86 0%, #45915c 100%);
 }
 
 .main nav .top-content .right form input {

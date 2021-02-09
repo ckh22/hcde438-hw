@@ -10,11 +10,37 @@ body {
 .messages {
     display: flex;
     flex-direction: column;
-    .message {
-        padding: 5px;
+    .container {
+        width: 400px;
+        height: 70px;
+        margin: 1em 2em;
+        background: rgb(15, 18, 46);
+        color: white;
+        position: relative;
+        border-radius: 15px 15px 15px 0px;
+        .message {
+            position: absolute;
+            width: 350px;
+            left: 5%;
+            top: 5%;
+        }
+        .date {
+            position: absolute;
+            right: 5%;
+            bottom: 5%;
+        }
     }
 }
 
+.myForm {
+    padding: 1em;
+    border-top: 1px solid rgb(136, 151, 172);
+    box-shadow: 0px -5px 10px 0px black;
+    display: flex;
+    div input {
+        height: 60px;
+    }
+}
 
 .main {
     display: flex;
@@ -22,7 +48,8 @@ body {
 
     nav {
         height: 5vh;
-        background: black;
+        background: rgb(49, 50, 95);
+        box-shadow: 0px 5px 10px 0px rgba(87, 88, 167, 0.658);
         color: white;
         .top-content {
             height: 100%;
@@ -37,31 +64,36 @@ body {
                 .logo {
                     padding: 1em;
                 }
-
-                .logo:hover {
-
-                }
-
             }
 
-            .right {    
+            .right {
                 form {
                     display: flex;
                     justify-content: center;
+                    align-items: center;
                     button {
+                        background: rgb(102, 126, 133);
+                        color: white;
                         height: 3vh;
                         border: none;
                         margin-left: 5px;
                         outline: none;
+                        width: 100px;
+                        transition-property: background, color;
+                        transition-duration: 0.4s;
+                        transition-timing-function: ease-out;
                     }
-    
+                    button:hover {
+                        background: linear-gradient(45deg, rgb(87, 111, 134) 0%, rgb(69, 145, 92) 100%);
+                    }
+
                     input {
                         height: 3vh;
                         outline: none;
                     }
                 }
                 .logout {
-                    width: 100px; 
+                    width: 100px;
                     height: 30px;
                     text-align: center;
                     line-height: 30px;
@@ -75,7 +107,7 @@ body {
                     font-weight: 600;
                     background: linear-gradient(45deg, rgb(67, 31, 83) 0%, rgb(77, 41, 0) 100%);
                     transform: scale(1.05);
-                    color: white
+                    color: white;
                 }
             }
         }
