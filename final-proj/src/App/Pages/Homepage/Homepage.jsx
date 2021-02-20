@@ -7,9 +7,6 @@ const Homepage = () => {
     const dispatch = useDispatch()
     const {async, auth, test} = useSelector(state => state)
     const [timestamp, setTimestamp] = useState('null')
-    console.log(async)
-    console.log(auth)
-    console.log(test)
     function signOut() {
         localStorage.clear()
         setTimestamp(null)
