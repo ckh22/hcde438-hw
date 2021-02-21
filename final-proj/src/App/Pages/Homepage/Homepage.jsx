@@ -1,6 +1,8 @@
+// importing redux, and dispatch actions
 import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import Login from '../../Components/Formik/Login'
+import Nav from '../../Components/Navbar/Nav'
 import { signInUser, signOutUser } from '../../Logic/Auth/authActions'
 
 const Homepage = () => {
@@ -22,6 +24,7 @@ const Homepage = () => {
     }, [timestamp])
     return (
         <div>
+            <Nav />
             {timestamp ? <div>You signed in from: {Date(timestamp)} <button onClick={() => {signOut()}}>sign out</button></div> : <Login setTimestamp={setTimestamp} />}
         </div>
     )

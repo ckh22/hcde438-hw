@@ -1,24 +1,30 @@
-import { Route } from "react-router-dom";
+// importing react router, and the required components
+import {Route} from "react-router-dom";
 import Homepage from './App/Pages/Homepage/Homepage'
-import React from 'react'
+import React, {Fragment} from 'react'
 import Nav from "./App/Components/Navbar/Nav";
 import './App.scss'
+import Register from './App/Components/Auth/Register'
+import Login from './App/Components/Auth/Login'
 
 const App = () => {
-  return (
-    <>
-      <Route path='/' component={Nav} />
-      <Route exact path='/' component={Homepage} />
-      <Route
-        path={"/(.+)"}
-        render={() => (
-          <div>
-            working!
-          </div>
-        )}
-      />
-    </>
-  )
+    return (
+        <>
+            <Route exact path='/'
+                component={Homepage}/>
+            <Route path={"/(.+)"}
+                render={
+                    () => (
+                        <Fragment>
+                            <Route exact path='/login'
+                                component={Login}/>
+                            <Route exact path='/register'
+                                component={Register}/>
+                        </Fragment>
+                    )
+                }/>
+        </>
+    )
 }
 
 export default App

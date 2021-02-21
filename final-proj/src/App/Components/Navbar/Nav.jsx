@@ -8,7 +8,6 @@ import {
 } from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu'
-import {purple} from '@material-ui/core/colors';
 
 const useStyles = makeStyles((theme) => ({
     root: {

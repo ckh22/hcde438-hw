@@ -1,4 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+
+// select all
 * {
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+// initial root
+#root {
+    height: 100vh;
+}
+
+// breakpoint organizer
+@mixin breakpoint($point) {
+    @if $point == desktop {
+        @media (min-width: 70em) {
+            @content;
+        }
+    } @else if $point == laptop {
+        @media (min-width: 64em) {
+            @content;
+        }
+    } @else if $point == tablet {
+        @media (min-width: 50em) {
+            @content;
+        }
+    } @else if $point == phablet {
+        @media (min-width: 37.5em) {
+            @content;
+        }
+    } @else if $point == mobileonly {
+        @media (max-width: 37.5em) {
+            @content;
+        }
+    }
+}
+
+.form-container {
+    // original settings
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include breakpoint(phablet) {
+        // phablet
+    }
+    @include breakpoint(laptop) {
+        // laptop
+    }
+}
+
+.auth-form {
+    width: 90%;
+    @include breakpoint(phablet) {
+        // phablet
+    }
+    @include breakpoint(laptop) {
+        // laptop
+    }
+}
+
+.back-button {
+    position: absolute;
+    @include breakpoint(phablet) {
+        // phablet
+    }
+    @include breakpoint(laptop) {
+        // laptop
+    }
 }
