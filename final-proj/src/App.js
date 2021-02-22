@@ -2,7 +2,6 @@
 import {Route} from "react-router-dom";
 import Homepage from './App/Pages/Homepage/Homepage'
 import React, {Fragment} from 'react'
-import Nav from "./App/Components/Navbar/Nav";
 import './App.scss'
 import Register from './App/Components/Auth/Register'
 import Login from './App/Components/Auth/Login'
