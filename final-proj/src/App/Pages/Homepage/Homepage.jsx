@@ -3,31 +3,62 @@ import React, {useEffect, useState} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import Login from '../../Components/Formik/Login'
 import Nav from '../../Components/Navbar/Nav'
-import FishBase from '../../Logic/API/FishBase'
 import {signInUser, signOutUser} from '../../Logic/Auth/authActions'
+import ReactLoading from 'react-loading';
+import {fetchFinances} from '../../Logic/API/financialActions'
+import {Card, CardActionArea, CardContent, Typography} from '@material-ui/core'
+import Stock from '../../Components/Stock/Stock'
+import {v4 as uuidv4} from 'uuid';
 
 const Homepage = () => {
     const dispatch = useDispatch()
-    const {async, auth, test} = useSelector(state => state)
-    console.log(auth)
+    const {async, auth, stocks} = useSelector(state => state)
     function signOut(value) {
         dispatch(signOutUser())
     }
+    const {actives, gainers, losers} = stocks
+
+    useEffect(() => {
+        dispatch(fetchFinances())
+    }, [dispatch])
 
     return (
         <div>
-            <FishBase />
-            <Nav/> {
-            auth.authenticated ? <div>You signed in from the email: {
-                auth.currentUser.email
-            }
-                <br/><button onClick={
-                    (value) => {
-                        signOut(value)
-                    }
-                }>sign out</button>
-            </div> : <Login loading={async.loading}/>
-        } </div>
+            <Nav/>
+            <header style={{textAlign: 'center', padding: '2em'}}>High Action Stocks</header>
+            <div className='stocks-container'>
+                {
+                
+                Object.values(actives).map((active) => (
+                    <Stock key={
+                            uuidv4()
+                        }
+                        active={active}/>
+                ))
+            }</div>
+            <header style={{textAlign: 'center', padding: '2em'}}>High Gain Stocks</header>
+            <div className='stocks-container'>
+                {
+                
+                Object.values(gainers).map((active) => (
+                    <Stock key={
+                            uuidv4()
+                        }
+                        active={active}/>
+                ))
+            }</div>
+            <header style={{textAlign: 'center', padding: '2em'}}>High Loss Stocks</header>
+            <div className='stocks-container'>
+                {
+                
+                Object.values(losers).map((active) => (
+                    <Stock key={
+                            uuidv4()
+                        }
+                        active={active}/>
+                ))
+            }</div>
+        </div>
     )
 }
 

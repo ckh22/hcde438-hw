@@ -10,6 +10,7 @@
 // initial root
 #root {
     height: 100vh;
+    background: rgb(211, 211, 211);
 }
 
 // breakpoint organizer
@@ -69,4 +70,18 @@
     @include breakpoint(laptop) {
         // laptop
     }
+}
+
+.stocks-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    @include breakpoint(laptop) {
+        
+    }
+}
+
+.stock-card {
+    width: 300px;
+    margin: 1em;
 }
