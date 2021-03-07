@@ -23,7 +23,7 @@ const Homepage = () => {
     }, [dispatch])
 
     return (
-        <div>
+        <div className='stock'>
             <Nav/>
             <header style={{textAlign: 'center', padding: '2em'}}>High Action Stocks</header>
             <div className='stocks-container'>

@@ -10,7 +10,6 @@
 // initial root
 #root {
     height: 100vh;
-    background: rgb(211, 211, 211);
 }
 
 // breakpoint organizer
@@ -85,3 +84,17 @@
     width: 300px;
     margin: 1em;
 }
+
+.left-panel {
+    width: 40%;
+}
+
+.flex-panel {
+    height: 100vh;
+    display: flex;
+}
+
+.right-panel {
+    width: 60%;
+}
+
