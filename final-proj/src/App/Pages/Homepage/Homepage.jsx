@@ -7,7 +7,7 @@ import {signInUser, signOutUser} from '../../Logic/Auth/authActions'
 import ReactLoading from 'react-loading';
 import {fetchFinances} from '../../Logic/API/financialActions'
 import {Card, CardActionArea, CardContent, Typography} from '@material-ui/core'
-import Stock from '../../Components/Stock/Stock'
+import Stock from '../../Components/Stocks/Stock'
 import {v4 as uuidv4} from 'uuid';
 
 const Homepage = () => {
@@ -33,7 +33,9 @@ const Homepage = () => {
                     <Stock key={
                             uuidv4()
                         }
-                        active={active}/>
+                        active={active}
+                        type='actives'
+                        />
                 ))
             }</div>
             <header style={{textAlign: 'center', padding: '2em'}}>High Gain Stocks</header>
@@ -44,7 +46,9 @@ const Homepage = () => {
                     <Stock key={
                             uuidv4()
                         }
-                        active={active}/>
+                        active={active}
+                        type='gainers'
+                        />
                 ))
             }</div>
             <header style={{textAlign: 'center', padding: '2em'}}>High Loss Stocks</header>
@@ -55,7 +59,9 @@ const Homepage = () => {
                     <Stock key={
                             uuidv4()
                         }
-                        active={active}/>
+                        active={active}
+                        type='losers'
+                        />
                 ))
             }</div>
         </div>

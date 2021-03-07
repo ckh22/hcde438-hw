@@ -5,6 +5,7 @@ import React, {Fragment} from 'react'
 import './App.scss'
 import Register from './App/Components/Auth/Register'
 import Login from './App/Components/Auth/Login'
+import StockPage from './App/Pages/Stock/StockPage'
 
 const App = () => {
     return (
@@ -19,6 +20,8 @@ const App = () => {
                                 component={Login}/>
                             <Route exact path='/register'
                                 component={Register}/>
+                                <Route exact path='/stock/:type/:id'
+                                component={StockPage}/>
                         </Fragment>
                     )
                 }/>

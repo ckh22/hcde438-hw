@@ -1,1 +1,2 @@
 export const FETCH_FINANCES = 'FETCH_FINANCES'
+export const GET_STOCK = 'GET_STOCK'

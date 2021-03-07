@@ -6,9 +6,10 @@ import {
     Button
 } from '@material-ui/core'
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 
-const Stock = ({active}) => {
+const Stock = ({active, type}) => {
     const num = active.percentChange > 0
     return (
         <Card variant='elevation' className='stock-card'>
@@ -28,7 +29,7 @@ const Stock = ({active}) => {
                 </Typography>
             </CardContent>
             <CardActions>
-                <Button size="small">Learn More</Button>
+                <Button component={ Link } to={`/stock/${type}/${active.ticker}`} size="small">Learn More</Button>
             </CardActions>
         </Card>
     )
