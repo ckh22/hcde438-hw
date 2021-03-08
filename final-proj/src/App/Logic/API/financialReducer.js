@@ -1,10 +1,10 @@
-import {FETCH_FINANCES, GET_STOCK} from './financialConstants'
+import {FETCH_FINANCES, GET_SHORT_INTEREST, GET_STOCK} from './financialConstants'
 const initialState = {
     actives: [],
     gainers: [],
     losers: [],
-    allStocks: [],
-    currentStock: []
+    stockFinancials: [],
+    stockShortInterest: []
 }
 
 export default function financialReducer(state = initialState, {
@@ -26,22 +26,16 @@ export default function financialReducer(state = initialState, {
                     ...state.losers,
                     ...payload.losers
                 ],
-                allStocks: [
-                    ...state.losers,
-                    ...payload.losers,
-                    ...state.gainers,
-                    ...payload.actives,
-                    ...state.actives,
-                    ...payload.actives
-                ]
             };
         case GET_STOCK:
             return {
                 ...state,
-                currentStock: [
-                    ...state.stocks,
-                    ...payload.stocks
-                ]
+                stockFinancials: {payload}
+            }
+        case GET_SHORT_INTEREST:
+            return {
+                ...state,
+                stockShortInterest: {payload}
             }
         default:
             return state;

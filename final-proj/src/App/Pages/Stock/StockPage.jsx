@@ -1,6 +1,7 @@
 import {LinearProgress} from '@material-ui/core'
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux'
+import Waterfall from '../../Components/Charts/Waterfall'
 import Chatroom from '../../Components/Chatter/Chatroom'
 
 import {getShortInterest, getStock} from '../../Logic/API/financialActions'
@@ -11,11 +12,10 @@ const StockPage = ({match}) => {
     const {initialized, error, loading} = async
     const stock = Object.values(stocks[match.params.type]).find((e) => e.ticker === match.params.id)
     const stockID = stock.performanceId
-    console.log(stock)
-
+    
     useEffect(() => {
-        dispatch(getShortInterest(stockID))
         dispatch(getStock(stockID))
+        dispatch(getShortInterest(stockID))
     }, [dispatch])
     return (
         <div> {
@@ -42,6 +42,7 @@ const StockPage = ({match}) => {
                     <div> {
                         stock.lastPrice
                     } </div>
+                    <Waterfall />
                 </div><Chatroom ticker={
                     match.params.id
                 }/></div>
