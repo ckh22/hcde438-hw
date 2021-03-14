@@ -2,7 +2,7 @@ import React, {useRef, useState, useEffect} from 'react'
 import {auth, firestore, signInWithGoogle, sendMessage} from '../../Database/db'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
-import {Button} from '@material-ui/core'
+import {Button, TextField} from '@material-ui/core'
 import Message from './Message/Message'
 
 const Chatroom = ({ticker}) => {
@@ -21,7 +21,7 @@ const Chatroom = ({ticker}) => {
     return (
         <div className='right-panel'>
             {
-            user ? <div className='messages'>
+            user ? <div className='messages' id='style-2'>
 
                 <div className='message'>
                     {
@@ -38,8 +38,12 @@ const Chatroom = ({ticker}) => {
             </div>
         }
             <form onSubmit={messenger}
-                className='chat-form'><input type="text"
+                className='chat-form'><TextField 
+                    id='standard-basic'
+                    type="text"
                     value={formValue}
+                    label="Message!"
+                    style={{width: '100%'}}
                     onChange={
                         (e) => setFormValue(e.target.value)
                     }/><button type='submit'></button>
