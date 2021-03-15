@@ -1,8 +1,9 @@
 import React, {useRef, useState, useEffect} from 'react'
-import {auth, firestore, signInWithGoogle, sendMessage} from '../../Database/db'
+import {auth, firestore, signInWithGoogle, sendMessage, signOut} from '../../Database/db'
 import {useAuthState} from 'react-firebase-hooks/auth'
+import {Link} from 'react-router-dom'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
-import {Button, TextField} from '@material-ui/core'
+import {Button, TextField, InputAdornment, IconButton, Input} from '@material-ui/core'
 import Message from './Message/Message'
 
 const Chatroom = ({ticker}) => {
@@ -16,10 +17,24 @@ const Chatroom = ({ticker}) => {
         e.preventDefault()
         sendMessage(messageRef, formValue)
         setFormValue('')
-        scroller.current.scrollIntoView({behavior: 'smooth'})
     }
     return (
         <div className='right-panel'>
+            <nav>
+                <ul>
+                    <li>
+                        <Link to='/'>
+                            Home
+                        </Link>
+                    </li>
+                    <li>
+                        {user ? <Link>
+                            {user.displayName}
+                        </Link> : <div></div>}
+                        {user ? <Button onClick={signOut}>Logout</Button>: <Button onClick={signInWithGoogle}>Sign In With Google</Button>}
+                    </li>
+                </ul>
+            </nav>
             {
             user ? <div className='messages' id='style-2'>
 
@@ -30,23 +45,27 @@ const Chatroom = ({ticker}) => {
                         }
                         message={msg}
                         auth={auth}/>)
-                }<div ref={scroller}></div></div>
+                }
+                    <div ref={scroller}></div>
+                </div>
 
-                
-            </div> : <div>
-                <Button onClick={signInWithGoogle}>Sign In With Google</Button>
+
+            </div> : <div className='messages' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 'large'}}>
+                Join the chatroom! ⬆️
             </div>
         }
             <form onSubmit={messenger}
-                className='chat-form'><TextField 
-                    id='standard-basic'
-                    type="text"
+                className='chat-form'><Input
                     value={formValue}
+                    disabled={user ? false: true}
                     label="Message!"
-                    style={{width: '100%'}}
+                    style={
+                        {width: '100%'}
+                    }
                     onChange={
                         (e) => setFormValue(e.target.value)
-                    }/><button type='submit'></button>
+                    }/>
+                <Button type='submit' disabled={user ? false: true}>Button</Button>
             </form>
         </div>
     )

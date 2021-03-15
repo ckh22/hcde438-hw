@@ -8,6 +8,9 @@ import {
 } from '@material-ui/core'
 import {makeStyles} from '@material-ui/core/styles';
 import MenuIcon from '@material-ui/icons/Menu'
+import { signInWithGoogle } from '../../Database/db';
+import {useAuthState} from 'react-firebase-hooks/auth'
+import {auth} from '../../Database/db'
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,28 +28,10 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Nav = () => {
+    const [user] = useAuthState(auth)
     const classes = useStyles();
     return (
-        <AppBar position="static"
-            className={
-                classes.root
-        }>
-            <Toolbar>
-                <IconButton edge="start" color="inherit" aria-label="menu"
-                    className={
-                        classes.menuButton
-                }>
-                    <MenuIcon/>
-                </IconButton>
-                <Typography variant="h6"
-                    className={
-                        classes.title
-                }>
-                    News
-                </Typography>
-                <Button color="inherit">Login</Button>
-            </Toolbar>
-        </AppBar>
+        <nav className='nav'></nav>
     )
 }
 

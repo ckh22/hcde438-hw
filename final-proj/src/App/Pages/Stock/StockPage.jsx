@@ -12,7 +12,7 @@ const StockPage = ({match}) => {
     const {initialized, error, loading} = async
     const stock = Object.values(stocks[match.params.type]).find((e) => e.ticker === match.params.id)
     const stockID = stock.performanceId
-    
+
     useEffect(() => {
         dispatch(getStock(stockID))
         dispatch(getShortInterest(stockID))
@@ -26,7 +26,11 @@ const StockPage = ({match}) => {
                     }
                         ({
                         stock.ticker
-                    })</header><hr/><span style={
+                    })</header><div>
+                        Last Price: ${
+                        stock.lastPrice
+                    } </div>
+                    <span style={
                         {
 
                             color: stock.percentChange > 0 ? 'green' : 'red'
@@ -35,14 +39,11 @@ const StockPage = ({match}) => {
                     }>
                         {
                         stock.percentChange
-                    }</span>
-                    <div>{
+                    }%</span>
+                    <div>Volume: {
                         stock.volume
                     }</div>
-                    <div> {
-                        stock.lastPrice
-                    } </div>
-                    <Waterfall />
+                    <Waterfall/>
                 </div><Chatroom ticker={
                     match.params.id
                 }/></div>

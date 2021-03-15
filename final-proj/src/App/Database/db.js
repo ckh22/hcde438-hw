@@ -39,5 +39,13 @@ export const sendMessage = async(messagesRef, formValue) => {
     await messagesRef.add({text: formValue, createdAt: firebase.firestore.FieldValue.serverTimestamp(), uid, photoURL})
 }
 
+export const signOut = () => {
+    firebase.auth().signOut().then(() => {
+        console.log('signout successful')
+    }).catch((error) => {
+        console.log(error)
+    })
+}
+
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
