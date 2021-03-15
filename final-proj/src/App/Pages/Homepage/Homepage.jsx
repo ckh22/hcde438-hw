@@ -1,21 +1,15 @@
 // importing redux, and dispatch actions
-import React, {useEffect, useState} from 'react'
+import React, {useEffect} from 'react'
 import {useSelector, useDispatch} from 'react-redux'
-import Login from '../../Components/Formik/Login'
 import Nav from '../../Components/Navbar/Nav'
-import {signInUser, signOutUser} from '../../Logic/Auth/authActions'
-import ReactLoading from 'react-loading';
 import {fetchFinances} from '../../Logic/API/financialActions'
-import {Card, CardActionArea, CardContent, Typography} from '@material-ui/core'
 import Stock from '../../Components/Stocks/Stock'
 import {v4 as uuidv4} from 'uuid';
+import {Divider, Paper} from '@material-ui/core'
 
 const Homepage = () => {
     const dispatch = useDispatch()
     const {async, auth, stocks} = useSelector(state => state)
-    function signOut(value) {
-        dispatch(signOutUser())
-    }
     const {actives, gainers, losers} = stocks
 
     useEffect(() => {
@@ -25,43 +19,59 @@ const Homepage = () => {
     return (
         <div className='stock'>
             <Nav/>
-            <header style={{textAlign: 'center', padding: '2em'}}>High Action Stocks</header>
+            <Paper square>
+                <header style={
+                    {
+                        textAlign: 'center',
+                        padding: '2em'
+                    }
+                }>High Action Stocks</header>
+            </Paper>
             <div className='stocks-container'>
                 {
-                
                 Object.values(actives).map((active) => (
                     <Stock key={
                             uuidv4()
                         }
                         active={active}
-                        type='actives'
-                        />
+                        type='actives'/>
                 ))
             }</div>
-            <header style={{textAlign: 'center', padding: '2em'}}>High Gain Stocks</header>
+            <Paper>
+                <header style={
+                    {
+                        textAlign: 'center',
+                        padding: '2em'
+                    }
+                }>High Gain Stocks</header>
+            </Paper>
             <div className='stocks-container'>
                 {
-                
                 Object.values(gainers).map((active) => (
                     <Stock key={
                             uuidv4()
                         }
                         active={active}
-                        type='gainers'
-                        />
+                        type='gainers'/>
                 ))
             }</div>
-            <header style={{textAlign: 'center', padding: '2em'}}>High Loss Stocks</header>
+            <Paper>
+                <header style={
+                    {
+                        textAlign: 'center',
+                        padding: '2em'
+                    }
+                }>High Loss Stocks</header>
+            </Paper>
+
             <div className='stocks-container'>
                 {
-                
                 Object.values(losers).map((active) => (
                     <Stock key={
                             uuidv4()
                         }
                         active={active}
-                        type='losers'
-                        />
+                        type='losers'/>
                 ))
             }</div>
         </div>

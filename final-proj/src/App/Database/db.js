@@ -13,9 +13,9 @@ firebase.initializeApp({
     measurementId: "G-NSGBKXMJ94"
 });
 
-export const signInWithGoogle = () => {
+export const signInWithGoogle = async () => {
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then((result) => { /** @type {firebase.auth.OAuthCredential} */
+    await firebase.auth().signInWithPopup(provider).then((result) => { /** @type {firebase.auth.OAuthCredential} */
         var credential = result.credential;
 
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -34,7 +34,7 @@ export const signInWithGoogle = () => {
     });
 }
 
-export const sendMessage = async(messagesRef, formValue) => {
+export const sendMessage = async (messagesRef, formValue) => {
     const {uid, photoURL} = auth.currentUser;
     await messagesRef.add({text: formValue, createdAt: firebase.firestore.FieldValue.serverTimestamp(), uid, photoURL})
 }

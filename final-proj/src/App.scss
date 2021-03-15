@@ -51,12 +51,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    @include breakpoint(phablet) {
-        // phablet
-    }
-    @include breakpoint(laptop) {
-        // laptop
-    }
 }
 .stock {
     background: rgb(167, 156, 184);
@@ -67,30 +61,16 @@
 }
 .auth-form {
     width: 90%;
-    @include breakpoint(phablet) {
-        // phablet
-    }
-    @include breakpoint(laptop) {
-        // laptop
-    }
 }
 
 .back-button {
     position: absolute;
-    @include breakpoint(phablet) {
-        // phablet
-    }
-    @include breakpoint(laptop) {
-        // laptop
-    }
 }
 
 .stocks-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    @include breakpoint(laptop) {
-    }
 }
 
 .stock-card {
@@ -100,12 +80,18 @@
 
 .left-panel {
     width: 40%;
-    background: rgb(0, 0, 0);
-    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     header {
         padding: 1em;
         font-size: large;
         font-weight: 700;
+    }
+    .table {
+        margin: 1em;
+        width: 80%;
     }
 }
 
@@ -114,12 +100,17 @@
     display: flex;
 }
 
+.MuiButtonBase-root {
+    max-width: 120px;
+}
+
 .right-panel {
     width: 60%;
     height: 100vh;
     nav {
         height: 5vh;
-        background: rgb(134, 134, 134);
+        background: rgb(134, 59, 177);
+        box-shadow: 0px 1px 10px 0px black;
         ul {
             list-style-type: none;
             height: 100%;
@@ -128,6 +119,8 @@
             align-items: center;
             li {
                 margin: 0em 1em;
+                display: flex;
+                align-items: center;
                 a {
                     text-decoration: none;
                     color: white;
@@ -141,36 +134,66 @@
     .messages {
         height: 89.9vh;
         overflow-y: scroll;
+        .message {
+            position: relative;
+            .sent {
+                div {
+                    max-width: 60%;
+                }
+                flex-direction: row-reverse;
+                padding: 1em;
+                margin: 0.5em;
+                align-items: center;
+                .avatar {
+                    margin: 1em;
+                }
+            }
+            display: flex;
+            flex-direction: column;
+            .recieved {
+                padding: 1em;
+                margin: 0.5em;
+                max-width: 60%;
+                .avatar {
+                    position: absolute;
+                    bottom: calc(50% - 20px);
+                    right: -10%;
+                }
+            }
+        }
     }
+}
+
+.message-text {
+    font-size: medium;
+    word-break:break-all;
+    padding: 1em;
 }
 
 .chat-form {
     display: flex;
     button {
-        background: rgb(27, 128, 114);
-        height: 5.0vh;
+        background: rgb(142, 29, 170);
+        height: 5vh;
         color: white;
     }
 }
 
-#style-2::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: #F5F5F5;
+#style-2::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    background-color: #f5f5f5;
 }
 
-#style-2::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: #F5F5F5;
+#style-2::-webkit-scrollbar {
+    width: 12px;
+    background-color: #f5f5f5;
 }
 
-#style-2::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: #3a3a3a;
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+#style-2::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: #3a3a3a;
+    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 }

@@ -1,9 +1,15 @@
-import React, {useRef, useState, useEffect} from 'react'
-import {auth, firestore, signInWithGoogle, sendMessage, signOut} from '../../Database/db'
+import React, {useRef, useState} from 'react'
+import {
+    auth,
+    firestore,
+    signInWithGoogle,
+    sendMessage,
+    signOut
+} from '../../Database/db'
 import {useAuthState} from 'react-firebase-hooks/auth'
 import {Link} from 'react-router-dom'
 import {useCollectionData} from 'react-firebase-hooks/firestore'
-import {Button, TextField, InputAdornment, IconButton, Input} from '@material-ui/core'
+import {Button, Input} from '@material-ui/core'
 import Message from './Message/Message'
 
 const Chatroom = ({ticker}) => {
@@ -15,7 +21,9 @@ const Chatroom = ({ticker}) => {
     const scroller = useRef()
     const messenger = async (e) => {
         e.preventDefault()
-        sendMessage(messageRef, formValue)
+        if (formValue.length > 0) {
+            sendMessage(messageRef, formValue)
+        }
         setFormValue('')
     }
     return (
@@ -27,12 +35,14 @@ const Chatroom = ({ticker}) => {
                             Home
                         </Link>
                     </li>
-                    <li>
-                        {user ? <Link>
-                            {user.displayName}
-                        </Link> : <div></div>}
-                        {user ? <Button onClick={signOut}>Logout</Button>: <Button onClick={signInWithGoogle}>Sign In With Google</Button>}
-                    </li>
+                    <li> {
+                        user ? <div> {
+                            user.displayName
+                        } </div> : <div></div>
+                    }
+                        {
+                        user ? <Button onClick={signOut}>Logout</Button> : <Button onClick={signInWithGoogle}>Sign In</Button>
+                    } </li>
                 </ul>
             </nav>
             {
@@ -50,14 +60,23 @@ const Chatroom = ({ticker}) => {
                 </div>
 
 
-            </div> : <div className='messages' style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: 'large'}}>
+            </div> : <div className='messages'
+                style={
+                    {
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        fontSize: 'large'
+                    }
+            }>
                 Join the chatroom! ⬆️
             </div>
         }
             <form onSubmit={messenger}
-                className='chat-form'><Input
-                    value={formValue}
-                    disabled={user ? false: true}
+                className='chat-form'><Input value={formValue}
+                    disabled={
+                        user ? false : true
+                    }
                     label="Message!"
                     style={
                         {width: '100%'}
@@ -65,7 +84,10 @@ const Chatroom = ({ticker}) => {
                     onChange={
                         (e) => setFormValue(e.target.value)
                     }/>
-                <Button type='submit' disabled={user ? false: true}>Button</Button>
+                <Button type='submit'
+                    disabled={
+                        user ? false : true
+                }>Button</Button>
             </form>
         </div>
     )
